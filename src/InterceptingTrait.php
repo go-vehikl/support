@@ -29,7 +29,7 @@ trait InterceptingTrait
 
     protected function getInterceptingAccessorName($property)
     {
-        return 'get'.studly_case($property) . 'Attribute';
+        return 'get'.$this->studlyCase($property) . 'Attribute';
     }
 
     public function __set($property, $value)
@@ -60,6 +60,12 @@ trait InterceptingTrait
 
     protected function getInterceptingMutatorName($property)
     {
-        return 'set'.studly_case($property) . 'Attribute';
+        return 'set'.$this->studlyCase($property) . 'Attribute';
+    }
+
+    protected function studlyCase($value)
+    {
+        $value = ucwords(str_replace(array('-', '_'), ' ', $value));
+        return str_replace(' ', '', $value);
     }
 }
