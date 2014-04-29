@@ -13,4 +13,9 @@ trait DecoratingTrait
     {
         return $this->object->{$property};
     }
+
+    public function __call($method, $parameters)
+    {
+        return call_user_func_array([$this->object, $method], $parameters);
+    }
 }

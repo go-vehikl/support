@@ -9,6 +9,12 @@ class DecoratingTraitTest extends PHPUnit_Framework_TestCase
         $decorator = new FooDecorator(new Foo);
         $this->assertSame('baz', $decorator->bar);
     }
+
+    public function test_it_delegates_method_calls()
+    {
+        $decorator = new FooDecorator(new Foo);
+        $this->assertSame('foobar', $decorator->baz());
+    }
 }
 
 class FooDecorator
@@ -19,4 +25,9 @@ class FooDecorator
 class Foo
 {
     public $bar = 'baz';
+
+    public function baz()
+    {
+        return 'foobar';
+    }
 }
