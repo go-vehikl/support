@@ -1,39 +1,39 @@
 <?php
 
-use Vehikl\Traits\DecoratingTrait;
+use Vehikl\Traits\DelegatingTrait;
 
-class DecoratingTraitTest extends PHPUnit_Framework_TestCase
+class DelegatingTraitTest extends PHPUnit_Framework_TestCase
 {
     public function test_it_delegates_getting_properties()
     {
-        $decorator = new FooDecorator(new Foo);
+        $decorator = new FooDelegator(new Foo);
         $this->assertSame('baz', $decorator->bar);
     }
 
     public function test_it_delegates_setting_properties()
     {
         $foo = new Foo;
-        $decorator = new FooDecorator($foo);
+        $decorator = new FooDelegator($foo);
         $decorator->bar = 'whizzle';
         $this->assertSame('whizzle', $foo->bar);
     }
 
     public function test_it_delegates_method_calls()
     {
-        $decorator = new FooDecorator(new Foo);
+        $decorator = new FooDelegator(new Foo);
         $this->assertSame('foobar', $decorator->baz());
     }
 
     public function test_it_delegates_method_calls_with_parameters()
     {
-        $decorator = new FooDecorator(new Foo);
+        $decorator = new FooDelegator(new Foo);
         $this->assertSame('something else', $decorator->foobar('something', 'else'));
     }
 }
 
-class FooDecorator
+class FooDelegator
 {
-    use DecoratingTrait;
+    use DelegatingTrait;
 }
 
 class Foo
