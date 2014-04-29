@@ -11,15 +11,30 @@ trait DelegatingTrait
 
     public function __get($property)
     {
+        return $this->getDelegateeProperty($property);
+    }
+
+    protected function getDelegateeProperty($property)
+    {
         return $this->delegatee->{$property};
     }
 
     public function __set($property, $value)
     {
+        $this->setDelegateeProperty($property, $value);
+    }
+
+    protected function setDelegateeProperty($property, $value)
+    {
         $this->delegatee->{$property} = $value;
     }
 
     public function __call($method, $parameters)
+    {
+        return $this->callDelegateeMethod($method, $parameters);
+    }
+
+    protected function callDelegateeMethod($method, $parameters)
     {
         return call_user_func_array([$this->delegatee, $method], $parameters);
     }

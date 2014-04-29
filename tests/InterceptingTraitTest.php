@@ -1,39 +1,39 @@
 <?php
 
-use Vehikl\Traits\MagicPropertiesTrait;
+use Vehikl\Traits\InterceptingTrait;
 
-class MagicPropertiesTraitTest extends PHPUnit_Framework_TestCase
+class InterceptingTraitTest extends PHPUnit_Framework_TestCase
 {
     public function test_can_get_magic_property_value()
     {
-        $stub = new MagicPropertiesStub;
+        $stub = new InterceptingStub;
         $this->assertSame('bar', $stub->foo);
     }
 
     public function test_undefined_property_returns_null()
     {
-        $stub = new MagicPropertiesStub;
+        $stub = new InterceptingStub;
         $this->assertNull($stub->bar);
     }
 
     public function test_can_set_magic_property_value()
     {
-        $stub = new MagicPropertiesStub;
+        $stub = new InterceptingStub;
         $stub->foo = 'baz';
         $this->assertSame('baz', $stub->foo);
     }
 
     public function test_can_set_non_magic_property_value()
     {
-        $stub = new MagicPropertiesStub;
+        $stub = new InterceptingStub;
         $stub->bar = 'baz';
         $this->assertSame('baz', $stub->bar);
     }
 }
 
-class MagicPropertiesStub
+class InterceptingStub
 {
-    use MagicPropertiesTrait;
+    use InterceptingTrait;
 
     protected $foo = 'bar';
 
