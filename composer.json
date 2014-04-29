@@ -1,0 +1,19 @@
+{
+    "name": "vehikl/traits",
+    "description": "",
+    "authors": [
+        {
+            "name": "Adam Wathan",
+            "email": "adam.wathan@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vehikl\\Traits\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
