@@ -24,7 +24,7 @@ trait InterceptingTrait
     protected function getInterceptingAccessorValue($property)
     {
         $method = $this->getInterceptingAccessorName($property);
-        return $this->$method($value);
+        return $this->$method();
     }
 
     protected function getInterceptingAccessorName($property)

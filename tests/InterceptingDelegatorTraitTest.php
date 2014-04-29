@@ -6,13 +6,13 @@ class InterceptingDelegatorTraitTest extends PHPUnit_Framework_TestCase
 {
     public function test_it_delegates_getting_properties()
     {
-        $object = new InterceptingDelegator(new Foo);
+        $object = new InterceptingDelegator(new Baz);
         $this->assertSame('baz', $object->bar);
     }
 
     public function test_it_delegates_setting_properties()
     {
-        $foo = new Foo;
+        $foo = new Baz;
         $object = new InterceptingDelegator($foo);
         $object->bar = 'whizzle';
         $this->assertSame('whizzle', $object->bar);
@@ -20,14 +20,14 @@ class InterceptingDelegatorTraitTest extends PHPUnit_Framework_TestCase
 
     public function test_it_intercepts_getting_properties()
     {
-        $object = new InterceptingDelegator(new Foo);
+        $object = new InterceptingDelegator(new Baz);
         $this->assertSame('expected value', $object->baz);
     }
 
 
     public function test_it_intercepting_accessors_can_use_delegate_value()
     {
-        $foo = new Foo;
+        $foo = new Baz;
         $foo->buzz = 'hello';
         $object = new InterceptingDelegator($foo);
         $this->assertSame('hello world', $object->buzz);
@@ -35,14 +35,14 @@ class InterceptingDelegatorTraitTest extends PHPUnit_Framework_TestCase
 
     public function test_it_intercepts_setting_properties()
     {
-        $object = new InterceptingDelegator(new Foo);
+        $object = new InterceptingDelegator(new Baz);
         $object->foo = 'foo';
         $this->assertSame('foo intercepted', $object->foo);
     }
 
     public function test_it_delegates_method_calls()
     {
-        $object = new InterceptingDelegator(new Foo);
+        $object = new InterceptingDelegator(new Baz);
         $this->assertSame('some text', $object->foobar('some', 'text'));
     }
 }
@@ -74,7 +74,7 @@ class InterceptingDelegator
     }
 }
 
-class Foo
+class Baz
 {
     public $bar = 'baz';
 
