@@ -20,7 +20,7 @@ class InterceptingTraitTest extends PHPUnit_Framework_TestCase
     {
         $stub = new InterceptingStub;
         $stub->foo = 'baz';
-        $this->assertSame('baz', $stub->foo);
+        $this->assertSame('baz intercepted', $stub->foo);
     }
 
     public function test_can_set_non_magic_property_value()
@@ -44,6 +44,6 @@ class InterceptingStub
 
     public function setFooAttribute($value)
     {
-        $this->foo = $value;
+        $this->foo = $value . " intercepted";
     }
 }

@@ -16,7 +16,7 @@ trait DelegatingTrait
 
     protected function getDelegateeProperty($property)
     {
-        return $this->delegatee->{$property};
+        return isset($this->delegatee->{$property}) ? $this->delegatee->{$property} : null;
     }
 
     public function __set($property, $value)

@@ -6,16 +6,15 @@ trait InterceptingDelegatorTrait
         __get as delegatingGet;
         __set as delegatingSet;
     }
-    use InterceptingTrait {
-        __get as interceptingGet;
-    }
+    use InterceptingTrait;
 
     public function __get($property)
     {
+        $delegatee_value = $this->delegatingGet($property);
         if ($this->hasInterceptingAccessor($property)) {
-            return $this->interceptingGet($property);
+            return $this->getInterceptingAccessorValue($property, $delegatee_value);
         }
-        return $this->delegatingGet($property);
+        return $delegatee_value;
     }
 
     public function __set($property, $value)
@@ -24,10 +23,5 @@ trait InterceptingDelegatorTrait
             $this->setInterceptingMutatorValue($property, $value);
         }
         $this->delegatingSet($property, $value);
-    }
-
-    public function __call($method, $parameters)
-    {
-
     }
 }

@@ -21,10 +21,10 @@ trait InterceptingTrait
         return method_exists($this, $method) && is_callable([$this, $method]);
     }
 
-    protected function getInterceptingAccessorValue($property)
+    protected function getInterceptingAccessorValue($property, $value = null)
     {
         $method = $this->getInterceptingAccessorName($property);
-        return $this->$method();
+        return $this->$method($value);
     }
 
     protected function getInterceptingAccessorName($property)
