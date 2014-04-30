@@ -30,7 +30,7 @@ trait InterceptingTrait
 
     protected function getInterceptingAccessorName($property)
     {
-        return 'get'.$this->studlyCase($property) . 'Attribute';
+        return 'get' . $this->studlyCase($property) . 'Attribute';
     }
 
     protected function getBasePropertyValue($property)
@@ -66,7 +66,7 @@ trait InterceptingTrait
 
     protected function getInterceptingMutatorName($property)
     {
-        return 'set'.$this->studlyCase($property) . 'Attribute';
+        return 'set' . $this->studlyCase($property) . 'Attribute';
     }
 
     protected function studlyCase($value)
