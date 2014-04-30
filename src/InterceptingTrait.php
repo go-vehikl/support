@@ -77,6 +77,6 @@ trait InterceptingTrait
 
     public function __isset($property)
     {
-        return $this->hasInterceptingAccessor($property) || isset($this->{$property});
+        return $this->hasInterceptingAccessor($property);
     }
 }
