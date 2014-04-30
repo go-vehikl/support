@@ -24,7 +24,8 @@ trait InterceptingTrait
     protected function getInterceptingAccessorValue($property)
     {
         $method = $this->getInterceptingAccessorName($property);
-        return $this->$method();
+        $base_value = isset($this->{$property}) ? $this->{$property} : null;
+        return $this->$method($base_value);
     }
 
     protected function getInterceptingAccessorName($property)
