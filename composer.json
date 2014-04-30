@@ -4,7 +4,11 @@
     "authors": [
         {
             "name": "Adam Wathan",
-            "email": "adam.wathan@gmail.com"
+            "email": "a.wathan@vehikl.com"
+        },
+        {
+            "name": "Grant Lovell",
+            "email": "g.lovell@vehikl.com"
         }
     ],
     "require": {
