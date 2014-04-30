@@ -29,10 +29,4 @@ trait InterceptingDelegatorTrait
         }
         $this->delegatingSet($property, $value);
     }
-
-    protected function getInterceptingAccessorValue($property, $value = null)
-    {
-        $method = $this->getInterceptingAccessorName($property);
-        return $this->$method($value);
-    }
 }
