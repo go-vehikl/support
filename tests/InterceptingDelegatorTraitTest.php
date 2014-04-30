@@ -24,8 +24,7 @@ class InterceptingDelegatorTraitTest extends PHPUnit_Framework_TestCase
         $this->assertSame('expected value', $object->baz);
     }
 
-
-    public function test_it_intercepting_accessors_can_use_delegate_value()
+    public function test_intercepting_accessors_can_use_delegate_value()
     {
         $foo = new Baz;
         $foo->buzz = 'hello';
