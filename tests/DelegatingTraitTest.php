@@ -1,6 +1,6 @@
 <?php
 
-use Vehikl\Traits\DelegatingTrait;
+use Vehikl\Support\DelegatingTrait;
 
 class DelegatingTraitTest extends PHPUnit_Framework_TestCase
 {

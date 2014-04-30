@@ -1,6 +1,6 @@
 <?php
 
-use Vehikl\Traits\InterceptingTrait;
+use Vehikl\Support\InterceptingTrait;
 
 class InterceptingTraitTest extends PHPUnit_Framework_TestCase
 {

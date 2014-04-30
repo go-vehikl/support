@@ -1,7 +1,7 @@
 <?php
 
-use Vehikl\Traits\InterceptingDelegatorTrait;
-use Vehikl\Traits\InterceptingTrait;
+use Vehikl\Support\InterceptingDelegatorTrait;
+use Vehikl\Support\InterceptingTrait;
 
 class InterceptingDelegatorTraitTest extends PHPUnit_Framework_TestCase
 {

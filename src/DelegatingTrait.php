@@ -1,4 +1,4 @@
-<?php namespace Vehikl\Traits;
+<?php namespace Vehikl\Support;
 
 trait DelegatingTrait
 {

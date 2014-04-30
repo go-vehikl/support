@@ -1,5 +1,5 @@
 {
-    "name": "vehikl/traits",
+    "name": "vehikl/support",
     "description": "",
     "authors": [
         {
@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Vehikl\\Traits\\": "src/"
+            "Vehikl\\Support\\": "src/"
         }
     },
     "minimum-stability": "stable"
