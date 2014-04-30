@@ -16,6 +16,9 @@ trait DelegatingTrait
 
     protected function getDelegateeProperty($property)
     {
+        if (! isset($this->delegatee->{$property})) {
+            return null;
+        }
         return $this->delegatee->{$property};
     }
 

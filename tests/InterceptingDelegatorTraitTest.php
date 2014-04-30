@@ -1,6 +1,7 @@
 <?php
 
 use Vehikl\Traits\InterceptingDelegatorTrait;
+use Vehikl\Traits\InterceptingTrait;
 
 class InterceptingDelegatorTraitTest extends PHPUnit_Framework_TestCase
 {
@@ -44,6 +45,12 @@ class InterceptingDelegatorTraitTest extends PHPUnit_Framework_TestCase
         $object = new InterceptingDelegator(new Baz);
         $this->assertSame('some text', $object->foobar('some', 'text'));
     }
+
+    public function test_can_properly_delegate_to_another_class_using_an_interceptor_for_an_undefined_property()
+    {
+        $object = new InterceptingDelegator(new Foobar);
+        $this->assertSame('hello world', $object->buzz);
+    }
 }
 
 class InterceptingDelegator
@@ -85,5 +92,15 @@ class Baz
     public function foobar($bar, $baz)
     {
         return "{$bar} {$baz}";
+    }
+}
+
+class Foobar
+{
+    use InterceptingTrait;
+
+    public function getBuzzAttribute()
+    {
+        return 'hello';
     }
 }

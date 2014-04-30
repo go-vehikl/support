@@ -19,9 +19,7 @@ trait InterceptingDelegatorTrait
 
     protected function getBasePropertyValue($property)
     {
-        if (isset($this->delegatee->{$property})) {
-            return $this->delegatingGet($property);
-        }
+        return $this->delegatingGet($property);
     }
 
     public function __set($property, $value)

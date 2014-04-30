@@ -24,13 +24,18 @@ trait InterceptingTrait
     protected function getInterceptingAccessorValue($property)
     {
         $method = $this->getInterceptingAccessorName($property);
-        $base_value = isset($this->{$property}) ? $this->{$property} : null;
+        $base_value = $this->getBasePropertyValue($property);
         return $this->$method($base_value);
     }
 
     protected function getInterceptingAccessorName($property)
     {
         return 'get'.$this->studlyCase($property) . 'Attribute';
+    }
+
+    protected function getBasePropertyValue($property)
+    {
+        return property_exists($this, $property) ? $this->{$property} : null;
     }
 
     public function __set($property, $value)
@@ -68,5 +73,10 @@ trait InterceptingTrait
     {
         $value = ucwords(str_replace(array('-', '_'), ' ', $value));
         return str_replace(' ', '', $value);
+    }
+
+    public function __isset($property)
+    {
+        return $this->hasInterceptingAccessor($property) || isset($this->{$property});
     }
 }

@@ -35,6 +35,12 @@ class InterceptingTraitTest extends PHPUnit_Framework_TestCase
         $stub = new InterceptingStub;
         $this->assertSame('whizzle mutated', $stub->baz);
     }
+
+    public function test_accessors_are_considered_set_properties()
+    {
+        $stub = new InterceptingStub;
+        $this->assertTrue(isset($stub->foobar));
+    }
 }
 
 class InterceptingStub
@@ -57,5 +63,10 @@ class InterceptingStub
     public function getBazAttribute($value)
     {
         return $value . ' mutated';
+    }
+
+    public function getFoobarAttribute()
+    {
+        return 'foobar';
     }
 }
