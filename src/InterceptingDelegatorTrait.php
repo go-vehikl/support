@@ -10,9 +10,8 @@ trait InterceptingDelegatorTrait
 
     public function __get($property)
     {
-        $base_value = $this->getBasePropertyValue($property);
         if ($this->hasInterceptingAccessor($property)) {
-            return $this->getInterceptingAccessorValue($property, $base_value);
+            return $this->getInterceptingAccessorValue($property);
         }
         return $this->delegatingGet($property);
     }
